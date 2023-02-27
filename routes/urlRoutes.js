@@ -1,10 +1,8 @@
 const router = require("express").Router();
 const controller = require("../controller/urlController");
 
-// Create a short URL
-router.post("/shorten", controller.shortenUrl);
+router.post("/shortUrl", controller.shortenUrl);
 
-// Redirect to the original URL
-router.get("/:urlCode", controller.redirectUrl);
+router.get("/:urlCodeDb", controller.redirectUrl);
 
 module.exports = router;
