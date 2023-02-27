@@ -30,10 +30,10 @@ exports.shortenUrl = async (req, res) => {
 };
 
 exports.redirectUrl = async (req, res) => {
-  const { urlCode } = req.params;
-  console.log(urlCode)
+  const { urlCodeDb } = req.params;
+  console.log(urlCodeDb)
   try {
-    const url = await Url.findOne({ urlCode });
+    const url = await Url.findOne({ urlCodeDb });
 
     if (!url) {
       return res.status(404).json({ message: "URL not found" });
