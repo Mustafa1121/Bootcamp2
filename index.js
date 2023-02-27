@@ -5,6 +5,8 @@ const app = require('express')()
 // Middleware
 app.use(require('express').json())
 
+//Routes
+app.use('/url',require('./routes/urlRoutes'))
 
 
 // Listen function
