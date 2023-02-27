@@ -1,5 +1,6 @@
 const Url = require("../models/urlModel");
-const shortid = require("shortid"); // to prevent the use of a hard codded function
+// const shortid = require("shortid"); // to prevent the use of a hard codded function
+const { nanoid } = require('nanoid');
 
 exports.shortenUrl = async (req, res) => {
   const { originalUrl } = req.body;
@@ -11,7 +12,12 @@ exports.shortenUrl = async (req, res) => {
 
     if (!url) {
       // Generate a unique 6-character code for the URL
-      let urlCode = shortid.generate();
+      // 1
+      // let urlCode = shortid.generate();
+      // 2       
+      let urlCode = nanoid(8);
+
+      console.log(req.get('host'))
       // Construct the short URL using the current request
       let shortUrl = `${req.protocol}://${req.get("host")}/url/${urlCode}`;
       url = new Url({
